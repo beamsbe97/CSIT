@@ -25,9 +25,8 @@ import java.util.Scanner;
 class AnNguyen_273_A3_FX extends JFrame{
   
     public static void main(String[] args){
-        JFrame what = new JFrame("asdfsdf");
         DemoSys ds = new DemoSys();
-        ds.setSize(200, 300);
+        ds.setSize(500, 800);
         ds.setVisible(true);
         ds.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -39,8 +38,9 @@ class AnNguyen_273_A3_FX extends JFrame{
 class DemoSys extends JFrame{
     private static Random rand = new Random();
     private static String[] comments = {"Statements too long", "Use meaningful identifiers", "Overall design OK", "Some improvements needed", "Well done"};
-    private static String[] names = {"Jessica", "Mike", "John", "Boris"};
+    private static String[] nameArray = {"Jessica", "Mike", "John", "Boris"};
     private static String[] titles = {"Part time student", "Full time student"};
+    private static String[] imageFiles = {"1.jpg", "2.jpg", "3.jpg"};
     private static String[] groups = {"T01", "T02", "T03", "T04", "T05"};
     private static String[] demoWhat = {"Lab 1", "Lab 2", "Lab3", "Lab 4", "Assignment 1", "Assignment 2", "Assignment 3"};
 
@@ -48,18 +48,22 @@ class DemoSys extends JFrame{
         alist.add(comments[rand.nextInt(comments.length)]);
         for (int i = 0; i < rand.nextInt(comments.length); i++) {
             String message = comments[rand.nextInt(comments.length)];
-            if(!alist.contains(message) && !alist.contains("Well done")){
+            if(!alist.contains(message) && !alist.contains("Well done") && message !="Well done"){
                 alist.add(message);
             }   
         }
     }
 
     public String generateName(){
-        return names[rand.nextInt(names.length)];
+        return nameArray[rand.nextInt(nameArray.length)];
     }
 
     public String generateTitle(){
         return titles[rand.nextInt(titles.length)];
+    }
+
+    public String generateImageFile(){
+        return imageFiles[rand.nextInt(imageFiles.length)];
     }
 
     public String generateGroup(){
@@ -93,7 +97,7 @@ class DemoSys extends JFrame{
                 //JOptionPane.showMessageDialog(null,"asdfasdf");
                 JFrame aFrame = new JFrame ("Welcome to 121 Demo System");
                 aFrame.setLayout (new FlowLayout ());
-		        aFrame.setSize (200, 300);
+		        aFrame.setSize (500, 800);
 		        aFrame.setVisible (true);
 
                 JLabel label = new JLabel();
