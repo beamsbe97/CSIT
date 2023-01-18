@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+  <body>
+    <h1>Part 1</h1>
+        <table border="1">
+            <tr>
+            <th colspan="5">CSIT128: Assignment 1</th>
+            <th>Group Tyy</th>
+            </tr>
+            <tr>
+            <td rowspan="3" colspan="2">Student Number/ Name/ Email</td>
+            <td>UOW ID 1</td>
+            <td colspan="2">An Nguyen</td>
+            <td>nguyen346@sim.edu.sg</td>
+            </tr>
+            <tr>
+            <td>UOW ID 2</td>
+            <td colspan="2">Francisco Chang</td>
+            <td>student2@sim.edu.sg</td>
+            <tr>
+            <td>UOW ID 3</td>
+            <td colspan="2">Some name 3</td>
+            <td>student3@sim.edu.sg</td>
+            </tr>
+            </tr>
+        </table>
+
+        <h2>Part 2: Hello World programme in different languages</h2>
+        <div style="margin-bottom:50px;">
+            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue"  onclick='sccrollToDiv("CPP")'>C++</button></div>
+            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue" onclick='sccrollToDiv("CS")'>C#</button></div>
+            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue" onclick='sccrollToDiv("Python")'>Python</button></div>
+            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue" onclick='scroll("html")'>HTML</button></div>
+        </div>
+        <div>
+            <div id="CPP" style="margin-bottom:50px"><img src="C:/Users/Anpanchiman/Desktop/128_A1/CPP-Language.png"></div>
+            <div id="Python" style="margin-bottom:50px"><img src="C:/Users/Anpanchiman/Desktop/128_A1/Python-Language.jpg"></div>
+            <div id="html" style="margin-bottom:50px"><img src="C:/Users/Anpanchiman/Desktop/128_A1/html-Language.png"></div>
+            <div id="CS" style="margin-bottom:50px"><img src="C:/Users/Anpanchiman/Desktop/128_A1/CS-Language.png"></div>
+        </div>
+
+        <div style="width:700px; border:2px solid gray"><h3>Part 3: University policies and services</h3>
+            <p>Plagiarism is treated seriourly. If we suspect any work is copied, all students involved are likely to receive zero 
+                for the entire assignment. Plagarism has led to students being expelled from the University. 
+                Please click <a href="https://www.uow.edu.au/student/support-services/learning-development/plagiarism/">here</a> to read more about Plagiarism</p>
+
+            <p>We know that life isn't perfect and there may be a time when you can't hand in an assignment on time, or make it
+                to class or an exam. If you find yourself in a situation like this, you may be eligible for Academic Consideration. 
+                Academic Consideration is designed to help students when they are sick, injured or where a serious, unplanned 
+                situation has occurred that has affected their ability to study. 
+                Please click <a href="https://www.uow.edu.au/student/admin/academic-consideration/portal/">here</a> to read more about Academic Consideration.
+            </p>
+            <p>If you have an issue or a problem that is affecting your study, then the Student Support Advisors may ve able to 
+                help. There are Student Support Advisors available to assist students who are studying at all UOW Campuses and
+                in all UOW Faculties.
+                Please click <a href="https://www.uow.edu.au/student/support-services/advisers/">here</a> to read more about Student Support Advisors
+            </p>
+
+            <div>Student Support Advisors contact details for Faculty of Engineering and Information Sciences:
+            
+            </div>
+
+            <p>Disability Serivices provide advice and support for students with a disability or health condition. Our aim is to
+                ensure students with a disability realise their full academic potential. We also provide support for those who are 
+                the primary carers for those with a medical condition or disability.
+                Please click <a href="https://www.uow.edu.au/student/support-services/sai/">here</a> to read more about Disability Services.
+            </p>
+        </div>
+            <form action="/action_page.php">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="moduleCode">Module code:</label>
+                <input type="text" id="moduleCode" name="moduleCode"><br><br>
+                <label for="currentDate">Current Date </label>
+                <input type="text" id="currentDate" readonly></p><br><br>
+                
+                <input type="submit" value="Submit">
+            </form>
+
+        <div>
+
+        </div>
+
+        <script>
+            const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            
+            function sccrollToDiv(section){
+                console.log('function called');
+                document.getElementById(section).scrollIntoView()
+            }
+
+            n =  new Date();
+            y = n.getFullYear();
+            m = month[n.getMonth()];
+            d = n.getDate();
+            document.getElementById("currentDate").value = d + " " + m + " " + y;
+        </script>
+
+  </body>
+</html>
