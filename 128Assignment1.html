@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 
   <body>
-    <h1>Part 1</h1>
-        <table border="1">
-            <tr>
-            <th colspan="5">CSIT128: Assignment 1</th>
-            <th>Group Tyy</th>
-            </tr>
-            <tr>
-            <td rowspan="3" colspan="2">Student Number/ Name/ Email</td>
-            <td>UOW ID 1</td>
-            <td colspan="2">An Nguyen</td>
-            <td>nguyen346@sim.edu.sg</td>
-            </tr>
-            <tr>
-            <td>UOW ID 2</td>
-            <td colspan="2">Francisco Chang</td>
-            <td>student2@sim.edu.sg</td>
-            <tr>
-            <td>UOW ID 3</td>
-            <td colspan="2">Some name 3</td>
-            <td>student3@sim.edu.sg</td>
-            </tr>
-            </tr>
-        </table>
-
+        <div>   
+            <h2>Part 1</h2>
+                <table border="1">
+                    <tr>
+                    <th colspan="5">CSIT128: Assignment 1</th>
+                    <th>Group Tyy</th>
+                    </tr>
+                    <tr>
+                    <td rowspan="3" colspan="2">Student Number/ Name/ Email</td>
+                    <td>UOW ID 1</td>
+                    <td colspan="2">An Nguyen</td>
+                    <td>nguyen346@sim.edu.sg</td>
+                    </tr>
+                    <tr>
+                    <td>UOW ID 2</td>
+                    <td colspan="2">Francisco Chang</td>
+                    <td>student2@sim.edu.sg</td>
+                    <tr>
+                    <td>UOW ID 3</td>
+                    <td colspan="2">Some name 3</td>
+                    <td>student3@sim.edu.sg</td>
+                    </tr>
+                    </tr>
+                </table>
+        </div> 
         <h2>Part 2: Hello World programme in different languages</h2>
         <div style="margin-bottom:50px;">
-            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue"  onclick='sccrollToDiv("CPP")'>C++</button></div>
-            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue" onclick='sccrollToDiv("CS")'>C#</button></div>
-            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue" onclick='sccrollToDiv("Python")'>Python</button></div>
-            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue" onclick='scroll("html")'>HTML</button></div>
+            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue"  onclick='scrollToDiv("CPP")'>C++</button></div>
+            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue" onclick='scrollToDiv("CS")'>C#</button></div>
+            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue" onclick='scrollToDiv("Python")'>Python</button></div>
+            <div><button style="border:none; background-color:inherit; margin-bottom:5px; text-decoration: underline; color:blue" onclick='scrollToDiv("html")'>HTML</button></div>
         </div>
         <div>
             <div id="CPP" style="margin-bottom:50px"><img src="C:/Users/Anpanchiman/Desktop/128_A1/CPP-Language.png"></div>
@@ -39,7 +40,8 @@
             <div id="CS" style="margin-bottom:50px"><img src="C:/Users/Anpanchiman/Desktop/128_A1/CS-Language.png"></div>
         </div>
 
-        <div style="width:700px; border:2px solid gray"><h3>Part 3: University policies and services</h3>
+        <div style="width:700px; border:2px solid gray">
+            <h2>Part 3: University policies and services</h2>
             <p>Plagiarism is treated seriourly. If we suspect any work is copied, all students involved are likely to receive zero 
                 for the entire assignment. Plagarism has led to students being expelled from the University. 
                 Please click <a href="https://www.uow.edu.au/student/support-services/learning-development/plagiarism/">here</a> to read more about Plagiarism</p>
@@ -66,6 +68,8 @@
                 Please click <a href="https://www.uow.edu.au/student/support-services/sai/">here</a> to read more about Disability Services.
             </p>
         </div>
+        <div>
+            <h2>Part 4</h2>
             <form action="/action_page.php">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name"><br><br>
@@ -76,7 +80,7 @@
                 
                 <input type="submit" value="Submit">
             </form>
-
+        </div>
         <div>
 
         </div>
@@ -84,16 +88,29 @@
         <script>
             const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
             
-            function sccrollToDiv(section){
-                console.log('function called');
+            function scrollToDiv(section){
+                console.log(section);
                 document.getElementById(section).scrollIntoView()
             }
 
-            n =  new Date();
-            y = n.getFullYear();
-            m = month[n.getMonth()];
-            d = n.getDate();
-            document.getElementById("currentDate").value = d + " " + m + " " + y;
+            n =  new Date()
+            y = n.getFullYear()
+            m = month[n.getMonth()]
+            d = n.getDate()
+            minute = n.getMinutes()
+            hour = n.getHours()
+
+            if (hour>12){
+                hour = hour - 12
+                meridiem = "pm"
+            }
+
+            else{
+                meridiem = "am"
+            }
+
+            time = hour + ":" + minute + meridiem
+            document.getElementById("currentDate").value = d + " " + m + " " + y +" " + time;
         </script>
 
   </body>
