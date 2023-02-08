@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<style>
+    table, th, td {
+      border:1px solid black;
+    }
+    </style>
+<body>
+    <table>
+        <td colspan="6">Part 2: Game</td>
+        <tr>
+            <td colspan="2" style="text-align:center" id="chosenNum">Your chosen number: </td>
+            <td colspan="2">
+                <button id="button1">1</button>
+                <button id="button2">2</button>
+                <button id="button3">3</button>
+                <button id="button4">4</button>
+                <button id="button5">5</button>
+                <button id="button6">6</button>
+                <button id="button7">7</button>
+                <button id="button8">8</button>
+                <button id="button9">9</button>
+                <button id="button10">10</button>
+
+            </td>
+            <td colspan="2" id="currentScore">Current Score: </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <button id="startBt" onclick="generateNumber()">Start Game</button>
+                <button id="stopBt">Stop Game</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" id="number1"></td>
+            <td colspan="2" id="number2">2nd number</td>
+            <td colspan="2" id="number3">3rd number</td>
+        </tr>
+
+    </table>
+
+
+</body>
+<script>
+    function generateNumber(){
+        num1 = Math.floor(Math.random() * 10)
+        num2 = Math.floor(Math.random() * 10)
+        while (num2 == num1){
+            num2 = Math.floor(Math.random() * 10)
+        }
+
+        num3 = Math.floor(Math.random() * 10)
+        while (num3 == num1 || num3 == num2){
+            num3 = Math.floor(Math.random() * 10)
+        }
+        document.getElementById("number1").value = num1
+    }
+</script>
