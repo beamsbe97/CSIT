@@ -1,4 +1,10 @@
+name = 'Nguyen Quoc An'  # (1) REPLACE THE STRING VARIABLE WITH YOUR NAME in string type
+student_num = '7769428' # (2) REPLACE THIS STRING VARIABLE WITH YOUR UOW ID in string type
+subject_code = 'CSIT110'
+
 import re
+
+# (2) insert class and function definitions here.
 
 #Question 1
 class Price:
@@ -28,6 +34,9 @@ class Inventory():
     hotline = "1800-1333-5432" 
     items = {}
 
+    oosCount = 0
+    validCount = 0
+
 #2b
     @classmethod
     def set_items_from_list(cls, aList):
@@ -38,30 +47,32 @@ class Inventory():
     @classmethod
     def order(cls):
         Y = {}
+        
         for item in cls.items:
             qty = int(input(f"How many {item} would you like to order?"))
             if qty>cls.items[item]["stock"]:
+                cls.oosCount+=1
                 raise OutOfStockError(item)
             if qty > 0:
+                cls.validCount+=1
                 Y[item] = qty
         return Y    
 
 #3b
 def collate_orders(N):
     invalidCount = 0
-    oosCount = 0
-    validCount = 0
+    
     for i in range(0,N):
         try:
             Inventory.order()
         except OutOfStockError:
-            oosCount+=1
+            pass
         except:
             invalidCount+=1
-        else:
-            validCount+=1          
-    print(f"'invalid': {invalidCount}, 'valid':{validCount}, 'oos': {oosCount}")
+            #print("Invalid input format")
 
+    Z = {'invalid':invalidCount,'valid':Inventory.validCount,'oos':Inventory.oosCount}
+    return Z
 
 #Question 4
 #4a
@@ -83,47 +94,70 @@ def get_nric_checksum(i):
 #4b
 def get_vehicle_plate_checksum(i):
     letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-    i="S3229"
+    remainderLetters = ['A','Z','Y','X','U','T','S','R','P','M','L','K','J','H','G','E','D','C','B']
+    
     prefix = re.findall("\D", i)
     if len(prefix)>2:
-        prefix = prefix[1:3]
+        prefix = [letters.index(prefix[1])+1, letters.index(prefix[2])+1]
     elif len(prefix)<2:
-        prefix = [0, prefix[0]]
+        prefix = [0, letters.index(prefix[0])+1]
     
-    prefix
-get_vehicle_plate_checksum("SBS3229") 
-
-
-
-#1a       
-pricetag = Price(2.89)
-print(pricetag)
-print(repr(pricetag)) 
-
-#1c
-try:
-    raise OutOfStockError("Eggs")
-except OutOfStockError as e:
-    print(e)
+    numbers = re.findall("\d",i)
+    numberList = []
+    for i in range(0,len(numbers)):
+        numberList.append(int(numbers[i]))
+        
+    missing = 4 - len(numberList)
+    for i in range(0,missing):
+        numberList.insert(0,0)
+        
+    final = (prefix[0]*9 +prefix[1]*4 +numberList[0]*5 +numberList[1]*4 +numberList[2]*3 +numberList[3]*2)%19
     
-#Question 2
-#2a
-print(Inventory.hotline)
-print(Inventory.items)
+    return remainderLetters[final]
+ 
+def main():
+    print("Assignment 3")
+    #Question 1
+    #1a       
+    pricetag = Price(2.89)
+    print(pricetag)
+    print(repr(pricetag)) 
 
-#2b
-print(Inventory.items)
-Inventory.set_items_from_list([["Eggs", 2.98, 12],["Milk", 4.65, 3]])
-print(Inventory.items)
-print(Inventory.items["Eggs"]["price"])
-#3a
-Inventory.set_items_from_list([["Eggs", 2.98, 12],["Milk", 4.65, 8],["Tea", 1.50, 6]])
-print(Inventory.items)
-print(Inventory.order())
-Inventory.order()
+    #1c
+    try:
+        raise OutOfStockError("Eggs")
+    except OutOfStockError as e:
+        print(e)
+        
+    #Question 2
+    #2a
+    print(Inventory.hotline)
+    print(Inventory.items)
 
-#3b
-Inventory.set_items_from_list([["Eggs", 2.98, 12],["Milk", 4.65, 8],["Tea", 1.50, 6]])
+    #2b
+    print(Inventory.items)
+    Inventory.set_items_from_list([["Eggs", 2.98, 12],["Milk", 4.65, 3]])
+    print(Inventory.items)
+    print(Inventory.items["Eggs"]["price"])
 
-print(collate_orders(4))
+    #Question 3
+    #3a
+    Inventory.set_items_from_list([["Eggs", 2.98, 12],["Milk", 4.65, 8],["Tea", 1.50, 6]])
+    print(Inventory.items)
+    print(Inventory.order())
+    Inventory.order()
 
+    #3b
+    Inventory.set_items_from_list([["Eggs", 2.98, 12],["Milk", 4.65, 8],["Tea", 1.50, 6]])
+    print(Inventory.items)
+    print(collate_orders(4))
+
+    #Question 4
+    #4a
+    get_nric_checksum(1234567)
+
+    #4b
+    get_vehicle_plate_checksum("SBS3229")
+    
+if __name__ == "__main__":
+    main()
